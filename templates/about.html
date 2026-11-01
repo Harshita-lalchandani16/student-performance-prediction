@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}About | StudentPredict{% endblock %}
+
+{% block content %}
+
+<section class="page-heading">
+
+    <p class="eyebrow">ABOUT THIS PROJECT</p>
+
+    <h1>Student Performance Prediction System</h1>
+
+</section>
+
+<section class="panel">
+
+    <h2>Project Overview</h2>
+
+    <p>
+        This Data Mining mini project uses a Decision Tree
+        Classification algorithm to predict whether a
+        student is likely to pass or fail.
+    </p>
+
+    <h2>Input Features</h2>
+
+    <p>
+        The model uses nine features: Age, Study Time,
+        Past Failures, Absences, Travel Time, Family Support,
+        Paid Extra Classes, Higher Education Interest
+        and Internet Access.
+    </p>
+
+    <h2>Target Definition</h2>
+
+    <p>
+        Students with final grade G3 greater than or equal
+        to 10 are classified as Pass. Students with G3
+        below 10 are classified as Fail.
+    </p>
+
+    <p>
+        The final grade is used only to create the target
+        label and is not given as a prediction input.
+    </p>
+
+</section>
+
+{% endblock %}

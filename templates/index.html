@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Home | StudentPredict{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <p class="eyebrow">DATA MINING MINI PROJECT</p>
+
+    <h1>
+        Student Performance
+        <span>Prediction System</span>
+    </h1>
+
+    <p>
+        Analyze student study habits and academic information
+        to predict performance using Machine Learning.
+    </p>
+
+    <a href="/predict" class="btn">
+        Predict Student Performance
+    </a>
+
+</section>
+
+<h2>Model Overview</h2>
+
+<section class="stats">
+
+    <div class="stat">
+        <strong>{{ metrics.get('total_students', 0) }}</strong>
+        <span>Total Students</span>
+    </div>
+
+    <div class="stat">
+        <strong>{{ metrics.get('accuracy', 0) }}%</strong>
+        <span>Model Accuracy</span>
+    </div>
+
+    <div class="stat">
+        <strong>{{ metrics.get('pass_count', 0) }}</strong>
+        <span>Passing Students</span>
+    </div>
+
+    <div class="stat">
+        <strong>{{ metrics.get('fail_count', 0) }}</strong>
+        <span>Failing Students</span>
+    </div>
+
+</section>
+
+<section class="panel">
+
+    <h2>About the Project</h2>
+
+    <p>
+        This project uses a Decision Tree Classification
+        algorithm to predict whether a student is likely
+        to pass or fail based on nine selected academic,
+        family and study-related features.
+    </p>
+
+</section>
+
+{% endblock %}

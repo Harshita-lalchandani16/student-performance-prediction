@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics | StudentPredict{% endblock %}
+
+{% block content %}
+
+<section class="page-heading">
+
+    <p class="eyebrow">MODEL EVALUATION</p>
+
+    <h1>Analytics</h1>
+
+    <p>Performance evaluation of the trained Decision Tree model.</p>
+
+</section>
+
+<section class="stats">
+
+    <div class="stat">
+        <strong>{{ metrics.get('accuracy', 0) }}%</strong>
+        <span>Accuracy</span>
+    </div>
+
+    <div class="stat">
+        <strong>{{ metrics.get('precision', 0) }}%</strong>
+        <span>Precision</span>
+    </div>
+
+    <div class="stat">
+        <strong>{{ metrics.get('recall', 0) }}%</strong>
+        <span>Recall</span>
+    </div>
+
+    <div class="stat">
+        <strong>{{ metrics.get('f1_score', 0) }}%</strong>
+        <span>F1 Score</span>
+    </div>
+
+</section>
+
+<section class="panel">
+
+    <h2>Confusion Matrix</h2>
+
+    <table>
+
+        <tr>
+            <th>Actual / Predicted</th>
+            <th>Fail</th>
+            <th>Pass</th>
+        </tr>
+
+        {% if metrics.get('confusion_matrix') %}
+
+        <tr>
+            <th>Fail</th>
+            <td>{{ metrics['confusion_matrix'][0][0] }}</td>
+            <td>{{ metrics['confusion_matrix'][0][1] }}</td>
+        </tr>
+
+        <tr>
+            <th>Pass</th>
+            <td>{{ metrics['confusion_matrix'][1][0] }}</td>
+            <td>{{ metrics['confusion_matrix'][1][1] }}</td>
+        </tr>
+
+        {% endif %}
+
+    </table>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Predict | StudentPredict{% endblock %}
+
+{% block content %}
+
+<section class="page-heading">
+
+    <p class="eyebrow">MACHINE LEARNING PREDICTION</p>
+
+    <h1>Student Performance Prediction</h1>
+
+    <p>
+        Enter the student's details below to predict
+        their academic performance.
+    </p>
+
+</section>
+
+{% if error %}
+<div class="alert error">
+    {{ error }}
+</div>
+{% endif %}
+
+{% if result %}
+
+<div class="result {{ 'pass' if result.prediction == 'Pass' else 'fail' }}">
+
+    <p class="eyebrow">PREDICTION RESULT</p>
+
+    <h2>{{ result.prediction }}</h2>
+
+    <p>Model Score: {{ result.score }}%</p>
+
+    <small>
+        This is the model's estimated score,
+        not a guarantee of actual academic performance.
+    </small>
+
+</div>
+
+{% endif %}
+
+<form method="POST" class="form-card" id="prediction-form">
+
+    <div class="form-grid">
+
+        {% for field in fields %}
+
+        <div class="form-group">
+
+            <label for="{{ field.name }}">
+                {{ field.label }} *
+            </label>
+
+            {% if field.type == "select" %}
+
+            <select
+                id="{{ field.name }}"
+                name="{{ field.name }}"
+                required
+            >
+
+                <option value="">Select {{ field.label }}</option>
+
+                {% for value, label in field.options %}
+
+                <option
+                    value="{{ value }}"
+                    {% if request.form.get(field.name) == value %}
+                    selected
+                    {% endif %}
+                >
+                    {{ label }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            {% else %}
+
+            <input
+                type="number"
+                id="{{ field.name }}"
+                name="{{ field.name }}"
+                min="{{ field.min }}"
+                max="{{ field.max }}"
+                value="{{ request.form.get(field.name, '') }}"
+                required
+            >
+
+            {% endif %}
+
+            <small>{{ field.help }}</small>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <button type="submit" class="btn" id="predict-button">
+        Predict Performance
+    </button>
+
+</form>
+
+{% endblock %}

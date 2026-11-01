@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}History | StudentPredict{% endblock %}
+
+{% block content %}
+
+<section class="page-heading">
+
+    <p class="eyebrow">PREVIOUS PREDICTIONS</p>
+
+    <h1>Prediction History</h1>
+
+</section>
+
+<section class="panel">
+
+    {% if rows %}
+
+    <table>
+
+        <tr>
+            <th>Date and Time</th>
+            <th>Prediction</th>
+            <th>Model Score</th>
+        </tr>
+
+        {% for row in rows %}
+
+        <tr>
+            <td>{{ row.date_time }}</td>
+            <td>{{ row.prediction }}</td>
+            <td>{{ row.model_score }}%</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No predictions available yet.</p>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

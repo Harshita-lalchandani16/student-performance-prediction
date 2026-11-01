@@ -1,0 +1,30 @@
+{
+    "accuracy": 64.56,
+    "precision": 67.61,
+    "recall": 90.57,
+    "f1_score": 77.42,
+    "confusion_matrix": [
+        [
+            3,
+            23
+        ],
+        [
+            5,
+            48
+        ]
+    ],
+    "total_students": 395,
+    "pass_count": 265,
+    "fail_count": 130,
+    "features": [
+        "age",
+        "studytime",
+        "failures",
+        "absences",
+        "traveltime",
+        "famsup",
+        "paid",
+        "higher",
+        "internet"
+    ]
+}
